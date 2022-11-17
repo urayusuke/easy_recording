@@ -19,9 +19,9 @@ class _RecordingWidgetState extends State<RecordingWidget> {
       ),
       body: Center(
           child: ElevatedButton(
-        child: Text('開始'),
+        child: const Text('開始'),
         onPressed: () async {
-           if (await record.hasPermission()) {
+          if (await record.hasPermission()) {
             await record.start(
               path: 'aFullPath/myFile.m4a',
               encoder: AudioEncoder.aacLc, // by default
