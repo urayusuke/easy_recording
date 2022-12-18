@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_sound/flutter_sound.dart';
+// import 'package:flutter_sound/flutter_sound.dart';
 
 
 class RecordingWidget extends StatefulWidget {
@@ -10,25 +10,25 @@ class RecordingWidget extends StatefulWidget {
 }
 
 class _RecordingWidgetState extends State<RecordingWidget> {
-  final FlutterSoundRecorder _myRecorder = FlutterSoundRecorder();
+  // final FlutterSoundRecorder _myRecorder = FlutterSoundRecorder();
   bool isStart = true;
   bool isRecording = false;
 
   @override
   void initState() {
     super.initState();
-    _myRecorder.openAudioSession().then((value) {
+    // _myRecorder.openAudioSession().then((value) {
       setState(() {
-        _mRecorderIsInited = true;
+        // _mRecorderIsInited = true;
       });
-    });
+    // });
   }
   
   @override
   void dispose() {
     // Be carful : you must `close` the audio session when you have finished with it.
-    _myRecorder.closeAudioSession();
-    _myRecorder = null;
+    // _myRecorder.closeAudioSession();
+    // _myRecorder = null;
     super.dispose();
   }
 
