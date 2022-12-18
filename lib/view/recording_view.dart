@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:record/record.dart';
+// import 'package:flutter_sound/flutter_sound.dart';
+
 
 class RecordingWidget extends StatefulWidget {
   const RecordingWidget({Key? key}) : super(key: key);
@@ -9,7 +10,27 @@ class RecordingWidget extends StatefulWidget {
 }
 
 class _RecordingWidgetState extends State<RecordingWidget> {
-  final record = Record();
+  // final FlutterSoundRecorder _myRecorder = FlutterSoundRecorder();
+  bool isStart = true;
+  bool isRecording = false;
+
+  @override
+  void initState() {
+    super.initState();
+    // _myRecorder.openAudioSession().then((value) {
+      setState(() {
+        // _mRecorderIsInited = true;
+      });
+    // });
+  }
+  
+  @override
+  void dispose() {
+    // Be carful : you must `close` the audio session when you have finished with it.
+    // _myRecorder.closeAudioSession();
+    // _myRecorder = null;
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,15 +40,16 @@ class _RecordingWidgetState extends State<RecordingWidget> {
       ),
       body: Center(
           child: ElevatedButton(
-        child: const Text('開始'),
+        child: isStart ? const Text('開始') : const Text('停止'),
         onPressed: () async {
-          if (await record.hasPermission()) {
-            await record.start(
-              path: 'aFullPath/myFile.m4a',
-              encoder: AudioEncoder.aacLc, // by default
-              bitRate: 128000, // by default
-              samplingRate: 44100,
-            );
+          if (isStart) {
+            setState(() {
+              isStart = !isStart;
+            });
+          } else {
+            setState(() {
+              isStart = !isStart;
+            });
           }
         },
       )),
